@@ -1,21 +1,21 @@
 <plugin>
-	<nom>Donnees Geolocalistation</nom>
+	<nom>Shop Geolocalistation</nom>
 	<auteur><a href="http://www.mychacra.net">Rainer Müller</a></auteur>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<etat>test</etat>
 	<description>
-	Quelques outils de géolocalisation
+	Détecte le pays, peut attribuer un langue et une divise selon le pays.
 	</description>
 	<licence>GPL 3</licence>
-	<prefix>geo_donnees</prefix>
+	<prefix>shop_geolocalisation</prefix>
 <!--		<icon>img/logo_boutique_32.png</icon>-->
 <!--	<bouton id="boutique_edit" parent="naviguer">
 		<icone>img/logo_boutique_24.png</icone>
 		<titre>Boutique</titre>   
 		<url>boutique</url>   
     	</bouton>-->
-	<options>boutique_geo_mes_options.php</options>
-	<necessite id="SPIP" version="[2.1.0;]" />
-	<necessite id="boutique" version="[0.1.6;]" />
+	<options>shop_geolocalisation_options.php</options>
+	<necessite id="SPIP" version="[3.0.10;]" />
+	<necessite id="shop" version="[1.2.3;]" />
 </plugin>
 
