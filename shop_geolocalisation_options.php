@@ -6,9 +6,9 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 // On teste si le navigateur accepte les cookies, sinon rien	
 
-if($_COOKIE['geo_test']){
-    include_spip('inc/ip_pays');
-    lancer_geolocalisation();
+if(!$_COOKIE['geo_test']){
+    $geolocalisation=charger_fonction('geolocalisation','action');
+    $geolocalisation=$geolocalisation();
 }
 
 ?>

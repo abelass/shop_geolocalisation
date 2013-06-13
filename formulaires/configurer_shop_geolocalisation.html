@@ -10,9 +10,9 @@
 		#ACTION_FORMULAIRE{#ENV{action}}
 
 		<ul>
-			[(#SAISIE{input, exemple,
-				label=<:shop_geolocalisation:cfg_exemple:>,
-				explication=<:shop_geolocalisation:cfg_exemple_explication:>})]
+			[(#SAISIE{pays, pays_defaut,
+				label=<:shop_geolocalisation:label_pays_defaut:>,
+				explication=<:shop_geolocalisation:explication_pays_defaut:>})]
 		</ul>
 
 		<input type="hidden" name="_meta_casier" value="shop_geolocalisation" />

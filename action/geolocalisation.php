@@ -4,7 +4,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 include_spip('inc/correspondances');
 
-function lancer_geolocalisation(){
+function action_geolocalisation_dist(){
     include_spip('inc/cookie');
     $ip =$GLOBALS['ip'];
     
@@ -80,8 +80,8 @@ function determiner_langue_pays($ip){
 function ip_pays($ip){
     $a=donnees_ip($ip);
 
-    //preg_match("/\((.*?)\)/",$a['Country'],$match);
-    $pays= $a['Country'];   
+    if(isset($a['Country']))$pays= $a['Country']; 
+    else $pays=pays_defaut();
 
     if(!$_COOKIE['geo_pays'])spip_setcookie('geo_pays',$pays,time()+30*24*3600);  
     
@@ -97,10 +97,14 @@ function donnees_ip($ip){
 
     $url="http://api.easyjquery.com/ips/?ip=".$ip."&full=true"; 
     
-    $data=file_get_contents($url);
+    if (function_exists('file_get_contents')) $data=file_get_contents($url);
     if(!$data){
+        
+    }
+    elseif (function_exists('curl_init')){ 
         $data=url_get_contents($url);
     }
+
 
     $data=json_decode($data,true); 
  
@@ -108,9 +112,7 @@ return $data;
 }
 
 function url_get_contents ($Url) {
-    if (!function_exists('curl_init')){ 
-        die('CURL is not installed!');
-    }
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $Url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
